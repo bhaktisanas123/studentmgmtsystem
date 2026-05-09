@@ -91,7 +91,7 @@ def signup():
         conn.commit()
         conn.close() 
 
-        return redirect('login.html')
+        return redirect(url_for('login'))
 
     return  render_template('signup.html') 
 
@@ -127,7 +127,41 @@ def login():
 @login_required
 def dashboard():
 
-    return f"Welcome {current_user.id} ✅" 
+    return render_template(
+        'dashboard.html',
+        username=current_user.id
+    ) 
+
+@app.route('/addstudent', methods=['GET','POST'])
+def addstudent():
+    if request.method=='POST':
+        fullname=request.form.get('fullname')
+        rollno=request.form.get('rollno')
+        phno=request.form.get('phno')
+        dob=request.form.get('dob')
+        age=request.form.get('age')
+        email=request.form.get('email')
+        admission=request.form.get('admission')
+        year=request.form.get('year')
+        department=request.form.get('department')
+        cou=request.form.get('cou')
+        addr=request.form.get('addr')
+        gender=request.form.get('gender') 
+
+        conn=sqlite3.connect('student.db')
+        cursor=conn.cursor() 
+
+        cursor.execute(''' 
+        INSERT INTO studentinfo (fullname,rollno,phno,dob,age,email,admission,year,department,cou,addr,gender)
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
+       ''',(fullname,rollno,phno,dob,age,email,admission,year,department,cou,addr,gender,)) 
+        
+        conn.commit()
+        conn.close() 
+
+        return "form saved successfully" 
+    
+    return render_template('addstudent.html')
 
 
 @app.route('/logout')
