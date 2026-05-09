@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>
+            signup page
+        </title>
+        <link rel="stylesheet" 
+    href="{{ url_for('static', filename='signup.css') }}">
+    </head>
+    <body>
+        <h1> the signup page</h1>
+        <form method="POST">
+          <input type="text" name="rollno" placeholder="enter your roll number"><br>
+          <input type="email" name="email" placeholder="enter your email id"><br>
+          <input type="text" name="username" placeholder="create your username"><br>
+          <input type="password" name="password" placeholder="create your password"><br>
+          <input type="submit" value="submit">
+        </form>
+    </body>
+</html>
