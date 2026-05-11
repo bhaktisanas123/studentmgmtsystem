@@ -161,7 +161,23 @@ def addstudent():
 
         return "form saved successfully" 
     
-    return render_template('addstudent.html')
+    return render_template('addstudent.html') 
+
+@app.route('/students')
+@login_required
+def students():
+    conn=sqlite3.connect('student.db')
+    cursor=conn.cursor() 
+
+    cursor.execute('''
+      SELECT  * FROM studentinfo
+    ''') 
+
+    student_data=cursor.fetchall() 
+
+    conn.close()
+
+    return render_template('students.html', students=student_data)
 
 
 @app.route('/logout')
