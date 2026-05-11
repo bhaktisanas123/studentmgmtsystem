@@ -166,19 +166,63 @@ def addstudent():
 @app.route('/students')
 @login_required
 def students():
-    conn=sqlite3.connect('student.db')
-    cursor=conn.cursor() 
 
-    cursor.execute('''
-      SELECT  * FROM studentinfo
-    ''') 
+    rno = request.args.get('rollno')
 
-    student_data=cursor.fetchall() 
+    conn = sqlite3.connect('student.db')
+
+    cursor = conn.cursor()
+
+    if rno:
+
+        cursor.execute(
+            '''
+            SELECT * FROM studentinfo
+            WHERE rollno=?
+            ''',
+            (rno,)
+        )
+
+    else:
+
+        cursor.execute(
+            '''
+            SELECT * FROM studentinfo
+            '''
+        )
+
+    student_data = cursor.fetchall()
 
     conn.close()
 
-    return render_template('students.html', students=student_data)
+    return render_template(
+        'students.html',
+        students=student_data
+    ) 
 
+@app.route('/delete/<int:rollno>', methods=['GET','POST'])
+@login_required
+def delete_student(rollno): 
+    rno=request.form.get('rollno')
+
+    conn = sqlite3.connect('student.db')
+
+    cursor = conn.cursor()
+
+    cursor.execute(
+        '''
+        DELETE FROM studentinfo
+        WHERE rollno=?
+        ''',
+        (rollno,)
+    )
+     
+
+    conn.commit()
+
+    conn.close()
+
+    return redirect(url_for('students'))
 
 @app.route('/logout')
 @login_required

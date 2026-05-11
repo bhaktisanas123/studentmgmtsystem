@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>Students</title>
+    <title>View Students</title>
 
     <link rel="stylesheet"
     href="{{ url_for('static', filename='students.css') }}">
@@ -14,6 +14,19 @@
 <body>
 
     <h1>Student Records</h1>
+
+    <form method="GET" class="search-form">
+
+        <input
+            type="text"
+            name="rollno"
+            placeholder="Search by Roll Number">
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
 
     <table>
 
@@ -36,6 +49,8 @@
             <th>Year</th>
 
             <th>Email</th>
+
+            <th>Delete</th>
 
         </tr>
 
@@ -60,6 +75,18 @@
             <td>{{ student[10] }}</td>
 
             <td>{{ student[11] }}</td>
+
+            <td>
+
+                <a href="/delete/{{ student[1] }}">
+
+                    <button class="delete-btn">
+                        Delete
+                    </button>
+
+                </a>
+
+            </td>
 
         </tr>
 
