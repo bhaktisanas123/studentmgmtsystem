@@ -121,4 +121,42 @@ input[type="submit"]:hover{
         opacity: 1;
         transform: translateY(0);
     }
+} 
+
+.flash-message{
+
+    width: fit-content;
+
+    margin: 20px auto;
+
+    padding: 14px 22px;
+
+    background: #22c55e;
+
+    color: white;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity: 0;
+
+        transform: translateY(-10px);
+    }
+
+    to{
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
 }

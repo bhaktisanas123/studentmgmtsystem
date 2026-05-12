@@ -13,25 +13,59 @@
 
 <body>
 
-    <div class="container">
+    <h1>Student Management Dashboard</h1>
 
-        <h1>Welcome {{ username }} ✅</h1>
+    <div class="button-container">
 
-        <div class="buttons">
+        <a href="/addstudent">
 
-            <a href="/addstudent">
-                <button>Add Student</button>
-            </a>
+            <button>
+                Add Student
+            </button>
 
-            <a href="/students">
-                <button>View Students</button>
-            </a>
+        </a>
 
-            <a href="/logout">
-                <button class="logout">
-                    Logout
-                </button>
-            </a>
+        <a href="/students">
+
+            <button>
+                View Students
+            </button>
+
+        </a>
+
+        <a href="/logout">
+
+            <button class="logout-btn">
+                Logout
+            </button>
+
+        </a>
+
+    </div>
+
+    <div class="card-container">
+
+        <div class="card">
+
+            <h2>Total Students</h2>
+
+            <p>{{ total_students }}</p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Total Courses</h2>
+
+            <p>{{ total_courses }}</p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Total Departments</h2>
+
+            <p>{{ total_departments }}</p>
 
         </div>
 

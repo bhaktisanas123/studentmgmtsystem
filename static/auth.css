@@ -7,13 +7,6 @@
 
 body{
 
-    background: linear-gradient(
-        135deg,
-        #0f172a,
-        #1e293b,
-        #334155
-    );
-
     min-height: 100vh;
 
     display: flex;
@@ -22,43 +15,55 @@ body{
 
     align-items: center;
 
-    padding: 40px 0;
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b,
+        #334155
+    );
 }
 
-form{
+.container{
 
-    width: 90%;
+    width: 100%;
 
-    max-width: 850px;
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.form-box{
+
+    width: 400px;
+
+    padding: 40px;
+
+    border-radius: 20px;
 
     background: rgba(255,255,255,0.08);
 
     backdrop-filter: blur(10px);
 
-    border-radius: 20px;
-
-    padding: 35px;
-
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 
-    display: grid;
+    display: flex;
 
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
 
     gap: 18px;
 }
 
 h1{
 
-    position: absolute;
-
-    top: 30px;
-
     color: white;
 
-    font-size: 36px;
+    text-align: center;
 
-    letter-spacing: 1px;
+    margin-bottom: 10px;
+
+    font-size: 34px;
 }
 
 input{
@@ -79,7 +84,7 @@ input{
 
     font-size: 15px;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
 
     transition: 0.3s;
 }
@@ -98,16 +103,13 @@ input:focus{
     transform: scale(1.02);
 }
 
-input[readonly]{
+button{
 
-    background: rgba(255,255,255,0.2);
+    padding: 14px;
 
-    cursor: not-allowed;
-}
+    border: none;
 
-input[type="submit"]{
-
-    grid-column: span 2;
+    border-radius: 10px;
 
     background: linear-gradient(
         135deg,
@@ -117,7 +119,7 @@ input[type="submit"]{
 
     color: white;
 
-    font-size: 17px;
+    font-size: 16px;
 
     font-weight: bold;
 
@@ -126,61 +128,47 @@ input[type="submit"]{
     transition: 0.3s;
 }
 
-input[type="submit"]:hover{
+button:hover{
 
     transform: translateY(-3px);
 
     box-shadow: 0 8px 20px rgba(37,99,235,0.4);
 }
 
-@media(max-width:700px){
+p{
 
-    form{
+    text-align: center;
 
-        grid-template-columns: 1fr;
-    }
+    color: white;
 
-    input[type="submit"]{
+    margin-top: 10px;
+}
 
-        grid-column: span 1;
-    }
-} 
+a{
+
+    color: #38bdf8;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+a:hover{
+
+    text-decoration: underline;
+}
 
 .flash-message{
 
-    width: fit-content;
+    padding: 12px;
 
-    margin: 20px auto;
-
-    padding: 14px 22px;
+    border-radius: 10px;
 
     background: #22c55e;
 
     color: white;
 
-    border-radius: 10px;
+    text-align: center;
 
     font-weight: bold;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-
-    animation: fadeIn 0.5s ease;
 }
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity: 0;
-
-        transform: translateY(-10px);
-    }
-
-    to{
-
-        opacity: 1;
-
-        transform: translateY(0);
-    }
-} 
-

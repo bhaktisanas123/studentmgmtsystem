@@ -1,17 +1,70 @@
+<!DOCTYPE html>
+
 <html>
-    <head>
-        <title>
-            login page
-        </title>
-        <link rel="stylesheet"
-        href="{{ url_for('static', filename='login.css') }}">
-    </head>
-    <body>
-        <h1>the login page</h1>
-        <form method="POST">
-            <input type="text" name="username" placeholder="enter your username"><br>
-            <input type="text" name="password" placeholder="enter your password"><br>
-            <input type="submit" value="login">
+
+<head>
+
+    <title>Login</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='auth.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form method="POST" class="form-box">
+
+            <h1>Welcome Back</h1>
+
+            {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div class="flash-message">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter Username"
+                required>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter Password"
+                required>
+
+            <button type="submit">
+                Login
+            </button>
+
+            <p>
+                Don't have an account?
+
+                <a href="/">
+                    Signup
+                </a>
+            </p>
+
         </form>
-    </body>
+
+    </div>
+
+</body>
+
 </html>

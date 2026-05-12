@@ -1,4 +1,4 @@
-from flask import Flask,render_template,redirect,url_for,request
+from flask import Flask,render_template,redirect,url_for,request,flash
 from flask_login import (
     LoginManager,
     UserMixin,
@@ -91,6 +91,8 @@ def signup():
         conn.commit()
         conn.close() 
 
+        flash("Signup Successful ✅")
+
         return redirect(url_for('login'))
 
     return  render_template('signup.html') 
@@ -118,7 +120,7 @@ def login():
             login_user(user_obj) 
             return redirect(url_for('dashboard'))
         else:
-            return "login failed" 
+            flash("Invalid Username or Password ❌")
         
     return render_template('login.html') 
 
@@ -127,10 +129,50 @@ def login():
 @login_required
 def dashboard():
 
+    conn = sqlite3.connect('student.db')
+
+    cursor = conn.cursor()
+
+    # Total Students
+    cursor.execute(
+        '''
+        SELECT COUNT(*) FROM studentinfo
+        '''
+    )
+
+    total_students = cursor.fetchone()[0]
+
+    # Total Courses
+    cursor.execute(
+        '''
+        SELECT COUNT(DISTINCT cou)
+        FROM studentinfo
+        '''
+    )
+
+    total_courses = cursor.fetchone()[0]
+
+    # Total Departments
+    cursor.execute(
+        '''
+        SELECT COUNT(DISTINCT department)
+        FROM studentinfo
+        '''
+    )
+
+    total_departments = cursor.fetchone()[0]
+
+    conn.close()
+
     return render_template(
         'dashboard.html',
-        username=current_user.id
-    ) 
+
+        total_students=total_students,
+
+        total_courses=total_courses,
+
+        total_departments=total_departments
+    )
 
 @app.route('/addstudent', methods=['GET','POST'])
 def addstudent():
@@ -159,7 +201,7 @@ def addstudent():
         conn.commit()
         conn.close() 
 
-        return "form saved successfully" 
+        flash("Student Added Successfully ✅")
     
     return render_template('addstudent.html') 
 
@@ -221,6 +263,7 @@ def delete_student(rollno):
     conn.commit()
 
     conn.close()
+    flash("Student Deleted Successfully ✅")
 
     return redirect(url_for('students')) 
 
@@ -296,6 +339,8 @@ def edit_student(rollno):
 
         conn.close()
 
+        
+
         return redirect(url_for('students'))
 
     cursor.execute(
@@ -309,6 +354,7 @@ def edit_student(rollno):
     student = cursor.fetchone()
 
     conn.close()
+    
 
     return render_template(
         'editstudent.html',

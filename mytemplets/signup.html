@@ -1,19 +1,82 @@
+<!DOCTYPE html>
+
 <html>
-    <head>
-        <title>
-            signup page
-        </title>
-        <link rel="stylesheet" 
-    href="{{ url_for('static', filename='signup.css') }}">
-    </head>
-    <body>
-        <h1> the signup page</h1>
-        <form method="POST">
-          <input type="text" name="rollno" placeholder="enter your roll number"><br>
-          <input type="email" name="email" placeholder="enter your email id"><br>
-          <input type="text" name="username" placeholder="create your username"><br>
-          <input type="password" name="password" placeholder="create your password"><br>
-          <input type="submit" value="submit">
+
+<head>
+
+    <title>Signup</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='auth.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form method="POST" class="form-box">
+
+            <h1>Create Account</h1>
+
+            {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div class="flash-message">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+            <input
+                type="text"
+                name="rollno"
+                placeholder="Enter Roll Number"
+                required>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter Email"
+                required>
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Create Username"
+                required>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Create Password"
+                required>
+
+            <button type="submit">
+                Signup
+            </button>
+
+            <p>
+                Already have an account?
+
+                <a href="/login">
+                    Login
+                </a>
+            </p>
+
         </form>
-    </body>
+
+    </div>
+
+</body>
+
 </html>

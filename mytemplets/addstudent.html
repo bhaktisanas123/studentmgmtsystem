@@ -8,6 +8,23 @@
     </head>
     <body>
         <h1>the student information form</h1>
+        {% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="flash-message">
+
+                {{ message }}
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+{% endwith %}
         <form method="POST">
             <input type="text" name="fullname" placeholder="enter student full name"><br>
             <input type="text" name="rollno" placeholder="enter student roll no "><br>
