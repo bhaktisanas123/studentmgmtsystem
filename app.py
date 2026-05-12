@@ -222,7 +222,98 @@ def delete_student(rollno):
 
     conn.close()
 
-    return redirect(url_for('students'))
+    return redirect(url_for('students')) 
+
+@app.route('/edit/<int:rollno>', methods=['GET', 'POST'])
+@login_required
+def edit_student(rollno):
+
+    conn = sqlite3.connect('student.db')
+
+    cursor = conn.cursor()
+
+    if request.method == 'POST':
+
+        fullname = request.form.get('fullname')
+
+        age = request.form.get('age')
+
+        phno = request.form.get('phno')
+
+        addr = request.form.get('addr')
+
+        gender = request.form.get('gender')
+
+        dob = request.form.get('dob')
+
+        cou = request.form.get('cou')
+
+        department = request.form.get('department')
+
+        year = request.form.get('year')
+
+        email = request.form.get('email')
+
+        admission = request.form.get('admission')
+
+        cursor.execute(
+            '''
+            UPDATE studentinfo
+
+            SET
+                fullname=?,
+                age=?,
+                phno=?,
+                addr=?,
+                gender=?,
+                dob=?,
+                cou=?,
+                department=?,
+                year=?,
+                email=?,
+                admission=?
+
+            WHERE rollno=?
+            ''',
+
+            (
+                fullname,
+                age,
+                phno,
+                addr,
+                gender,
+                dob,
+                cou,
+                department,
+                year,
+                email,
+                admission,
+                rollno
+            )
+        )
+
+        conn.commit()
+
+        conn.close()
+
+        return redirect(url_for('students'))
+
+    cursor.execute(
+        '''
+        SELECT * FROM studentinfo
+        WHERE rollno=?
+        ''',
+        (rollno,)
+    )
+
+    student = cursor.fetchone()
+
+    conn.close()
+
+    return render_template(
+        'editstudent.html',
+        student=student
+    )
 
 @app.route('/logout')
 @login_required

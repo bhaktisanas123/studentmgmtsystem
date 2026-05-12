@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Edit Student</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='editstudent.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Edit Student Details</h1>
+
+    <form method="POST">
+
+        <!-- Roll Number -->
+
+        <input
+            type="text"
+            value="{{ student[1] }}"
+            readonly>
+
+        <!-- Full Name -->
+
+        <input
+            type="text"
+            name="fullname"
+            value="{{ student[2] }}"
+            placeholder="Enter Full Name">
+
+        <!-- Age -->
+
+        <input
+            type="number"
+            name="age"
+            value="{{ student[3] }}"
+            placeholder="Enter Age">
+
+        <!-- Phone -->
+
+        <input
+            type="text"
+            name="phno"
+            value="{{ student[4] }}"
+            placeholder="Enter Phone Number">
+
+        <!-- Address -->
+
+        <input
+            type="text"
+            name="addr"
+            value="{{ student[5] }}"
+            placeholder="Enter Address">
+
+        <!-- Gender -->
+
+        <input
+            type="text"
+            name="gender"
+            value="{{ student[6] }}"
+            placeholder="Enter Gender">
+
+        <!-- DOB -->
+
+        <input
+            type="date"
+            name="dob"
+            value="{{ student[7] }}">
+
+        <!-- Course -->
+
+        <input
+            type="text"
+            name="cou"
+            value="{{ student[8] }}"
+            placeholder="Enter Course">
+
+        <!-- Department -->
+
+        <input
+            type="text"
+            name="department"
+            value="{{ student[9] }}"
+            placeholder="Enter Department">
+
+        <!-- Year -->
+
+        <input
+            type="number"
+            name="year"
+            value="{{ student[10] }}"
+            placeholder="Enter Year">
+
+        <!-- Email -->
+
+        <input
+            type="email"
+            name="email"
+            value="{{ student[11] }}"
+            placeholder="Enter Email">
+
+        <!-- Admission Date -->
+
+        <input
+            type="date"
+            name="admission"
+            value="{{ student[12] }}">
+
+        <!-- Submit -->
+
+        <input
+            type="submit"
+            value="Update Student">
+
+    </form>
+
+</body>
+
+</html>
