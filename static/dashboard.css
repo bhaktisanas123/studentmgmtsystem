@@ -130,4 +130,105 @@ button:hover{
     font-weight: bold;
 
     color: #38bdf8;
+} 
+
+nav{
+
+    width: 100%;
+
+    padding: 18px 40px;
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(10px);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.logo{
+
+    color: white;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.nav-links{
+
+    display: flex;
+
+    gap: 25px;
+}
+
+.nav-links a{
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover{
+
+    color: #38bdf8;
+
+    transform: translateY(-2px);
+}
+
+footer{
+
+    width: 100%;
+
+    margin-top: 50px;
+
+    padding: 18px;
+
+    text-align: center;
+
+    color: white;
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(10px);
+
+    font-size: 15px;
+
+    letter-spacing: 0.5px;
+}
+
+@media(max-width:768px){
+
+    nav{
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .nav-links{
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
 }

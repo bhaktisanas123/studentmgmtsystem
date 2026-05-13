@@ -1,4 +1,4 @@
-from flask import Flask,render_template,redirect,url_for,request,flash
+from flask import Flask,render_template,redirect,url_for,request,flash,send_file
 from flask_login import (
     LoginManager,
     UserMixin,
@@ -6,8 +6,10 @@ from flask_login import (
     logout_user,
     login_required,
     current_user
-)
+) 
 
+import csv 
+ 
 from werkzeug.security import (
     generate_password_hash,
     check_password_hash
@@ -423,7 +425,7 @@ def addstudent():
 
 @app.route('/students')
 @login_required
-def students():
+def students(): 
 
     rno = request.args.get('rollno')
 
@@ -456,6 +458,60 @@ def students():
     return render_template(
         'students.html',
         students=student_data
+    ) 
+
+@app.route('/exportcsv')
+@login_required
+def export_csv():
+
+    conn = sqlite3.connect('student.db')
+
+    cursor = conn.cursor()
+
+    cursor.execute(
+        '''
+        SELECT * FROM studentinfo
+        '''
+    )
+
+    students = cursor.fetchall()
+
+    conn.close()
+
+    with open(
+        'students.csv',
+        'w',
+        newline='',
+        encoding='utf-8'
+    ) as file:
+
+        writer = csv.writer(file)
+
+        # Column Names
+
+        writer.writerow([
+            'ID',
+            'Roll No',
+            'Full Name',
+            'Age',
+            'Phone',
+            'Address',
+            'Gender',
+            'DOB',
+            'Course',
+            'Department',
+            'Year',
+            'Email',
+            'Admission'
+        ])
+
+        # Student Data
+
+        writer.writerows(students)
+
+    return send_file(
+        'students.csv',
+        as_attachment=True
     )
 
 

@@ -11,7 +11,9 @@
 
 </head>
 
-<body>
+<body> 
+
+
 
     <div class="container">
 
@@ -48,7 +50,17 @@
 
         </form>
 
-        <div class="table-container">
+        <div class="table-container"> 
+
+            <a href="/exportcsv">
+
+    <button class="export-btn">
+
+        Export CSV
+
+    </button>
+
+</a>
 
             <table>
 
@@ -114,14 +126,14 @@
 
                     <td>
 
-                        <a href="/delete/{{ student[1] }}">
+                        <a href="/delete/{{ student[1] }}"
+                       onclick="return confirm('Are you sure you want to delete this student?')">
 
-                            <button class="delete-btn">
+                             <button class="delete-btn">
                                 Delete
-                            </button>
+                          </button>
 
-                        </a>
-
+                            </a>
                     </td>
 
                 </tr>
@@ -132,7 +144,13 @@
 
         </div>
 
-    </div>
+    </div> 
+
+    <footer>
+
+    Developed by Bhakti Sanas 🚀
+
+</footer>
 
 </body>
 

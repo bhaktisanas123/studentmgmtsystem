@@ -175,4 +175,61 @@ button:hover{
     text-align: center;
 
     font-weight: bold;
+} 
+
+
+
+
+
+/* =========================
+        FOOTER
+========================= */
+
+footer{
+
+    width: 100%;
+
+    padding: 18px;
+
+    margin-top: auto;
+
+    text-align: center;
+
+    color: rgba(255,255,255,0.85);
+
+    background: rgba(15,23,42,0.9);
+
+    backdrop-filter: blur(12px);
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    font-size: 15px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================
+        RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    nav{
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 20px;
+    }
+
+    .nav-links{
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 18px;
+    }
 }
