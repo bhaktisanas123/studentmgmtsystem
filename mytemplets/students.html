@@ -13,122 +13,126 @@
 
 <body>
 
-    <h1>Student Records</h1> 
+    <div class="container">
 
-    {% with messages = get_flashed_messages() %}
+        <h1>Student Records</h1>
 
-    {% if messages %}
+        {% with messages = get_flashed_messages() %}
 
-        {% for message in messages %}
+            {% if messages %}
 
-            <div class="flash-message">
+                {% for message in messages %}
 
-                {{ message }}
+                    <div class="flash-message">
 
-            </div>
+                        {{ message }}
 
-        {% endfor %}
+                    </div>
 
-    {% endif %}
+                {% endfor %}
 
-{% endwith %}
+            {% endif %}
 
-    <form method="GET" class="search-form">
+        {% endwith %}
 
-        <input
-            type="text"
-            name="rollno"
-            placeholder="Search by Roll Number">
+        <form method="GET" class="search-form">
 
-        <button type="submit">
-            Search
-        </button>
+            <input
+                type="text"
+                name="rollno"
+                placeholder="Search by Roll Number">
 
-    </form>
+            <button type="submit">
+                Search
+            </button>
 
-    <table>
+        </form>
 
-        <tr>
+        <div class="table-container">
 
-            <th>ID</th>
+            <table>
 
-            <th>Roll No</th>
+                <tr>
 
-            <th>Full Name</th>
+                    <th>ID</th>
 
-            <th>Age</th>
+                    <th>Roll No</th>
 
-            <th>Phone</th>
+                    <th>Full Name</th>
 
-            <th>Course</th>
+                    <th>Age</th>
 
-            <th>Department</th>
+                    <th>Phone</th>
 
-            <th>Year</th>
+                    <th>Course</th>
 
-            <th>Email</th>
+                    <th>Department</th>
 
-            <th>Edit</th>
+                    <th>Year</th>
 
-            <th>Delete</th>
+                    <th>Email</th>
 
-        </tr>
+                    <th>Edit</th>
 
-        {% for student in students %}
+                    <th>Delete</th>
 
-        <tr>
+                </tr>
 
-            <td>{{ student[0] }}</td>
+                {% for student in students %}
 
-            <td>{{ student[1] }}</td>
+                <tr>
 
-            <td>{{ student[2] }}</td>
+                    <td>{{ student[0] }}</td>
 
-            <td>{{ student[3] }}</td>
+                    <td>{{ student[1] }}</td>
 
-            <td>{{ student[4] }}</td>
+                    <td>{{ student[2] }}</td>
 
-            <td>{{ student[8] }}</td>
+                    <td>{{ student[3] }}</td>
 
-            <td>{{ student[9] }}</td>
+                    <td>{{ student[4] }}</td>
 
-            <td>{{ student[10] }}</td>
+                    <td>{{ student[8] }}</td>
 
-            <td>{{ student[11] }}</td>
+                    <td>{{ student[9] }}</td>
 
-            <!-- Edit Button -->
+                    <td>{{ student[10] }}</td>
 
-            <td>
+                    <td>{{ student[11] }}</td>
 
-                <a href="/edit/{{ student[1] }}">
+                    <td>
 
-                    <button class="edit-btn">
-                        Edit
-                    </button>
+                        <a href="/edit/{{ student[1] }}">
 
-                </a>
+                            <button class="edit-btn">
+                                Edit
+                            </button>
 
-            </td>
+                        </a>
 
-            <!-- Delete Button -->
+                    </td>
 
-            <td>
+                    <td>
 
-                <a href="/delete/{{ student[1] }}">
+                        <a href="/delete/{{ student[1] }}">
 
-                    <button class="delete-btn">
-                        Delete
-                    </button>
+                            <button class="delete-btn">
+                                Delete
+                            </button>
 
-                </a>
+                        </a>
 
-            </td>
+                    </td>
 
-        </tr>
+                </tr>
 
-        {% endfor %}
+                {% endfor %}
 
-    </table>
+            </table>
+
+        </div>
+
+    </div>
 
 </body>
 

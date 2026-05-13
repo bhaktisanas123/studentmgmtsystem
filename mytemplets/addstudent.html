@@ -1,44 +1,196 @@
+<!DOCTYPE html>
+
 <html>
-    <head>
-        <title>
-            addstudent page
-        </title>
-        <link rel="stylesheet"
-       href="{{ url_for('static', filename='addstudent.css') }}">
-    </head>
-    <body>
-        <h1>the student information form</h1>
-        {% with messages = get_flashed_messages() %}
 
-    {% if messages %}
+<head>
 
-        {% for message in messages %}
+    <title>Add Student</title>
 
-            <div class="flash-message">
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='addstudent.css') }}">
 
-                {{ message }}
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form method="POST" class="student-form">
+
+            <h1>Add Student</h1>
+
+            {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div class="flash-message">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+            <div class="grid">
+
+                <div class="input-box">
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        name="fullname"
+                        placeholder="Enter student full name"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Roll Number</label>
+
+                    <input
+                        type="text"
+                        name="rollno"
+                        placeholder="Enter roll number"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="text"
+                        name="phno"
+                        placeholder="Enter phone number"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Address</label>
+
+                    <input
+                        type="text"
+                        name="addr"
+                        placeholder="Enter address"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Date of Birth</label>
+
+                    <input
+                        type="date"
+                        name="dob"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Age</label>
+
+                    <input
+                        type="text"
+                        name="age"
+                        placeholder="Enter age"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Gender</label>
+
+                    <input
+                        type="text"
+                        name="gender"
+                        placeholder="Enter gender"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Year</label>
+
+                    <input
+                        type="text"
+                        name="year"
+                        placeholder="Enter year"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Course</label>
+
+                    <input
+                        type="text"
+                        name="cou"
+                        placeholder="Enter course"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Department</label>
+
+                    <input
+                        type="text"
+                        name="department"
+                        placeholder="Enter department"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter email"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Admission Date</label>
+
+                    <input
+                        type="date"
+                        name="admission"
+                        required>
+
+                </div>
 
             </div>
 
-        {% endfor %}
-
-    {% endif %}
-
-{% endwith %}
-        <form method="POST">
-            <input type="text" name="fullname" placeholder="enter student full name"><br>
-            <input type="text" name="rollno" placeholder="enter student roll no "><br>
-            <input type="text" name="phno" placeholder="enter student phone number "><br>
-            <input type="text" name="addr" placeholder="enter student addr"><br>
-            <input type="date" name="dob" placeholder="enter student birth date "><br>
-            <input type="text" name="age" placeholder="enter student age "><br>
-            <input type="text" name="gender" placeholder="enter student gender "><br>
-            <input type="text" name="year" placeholder="enter student year "><br>
-            <input type="text" name="cou" placeholder="enter student course "><br>
-            <input type="text" name="department" placeholder="enter student department "><br>
-            <input type="date" name="addmission" placeholder="enter student addmission date "><br>
-            <input type="submit" value="submit">
+            <button type="submit">
+                Add Student
+            </button>
 
         </form>
-    </body>
+
+    </div>
+
+</body>
+
 </html>

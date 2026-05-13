@@ -7,6 +7,8 @@
 
 body{
 
+    min-height: 100vh;
+
     background: linear-gradient(
         135deg,
         #0f172a,
@@ -14,24 +16,23 @@ body{
         #334155
     );
 
-    min-height: 100vh;
-
     padding: 40px;
+}
 
-    overflow-x: auto;
+.container{
+
+    width: 100%;
 }
 
 h1{
 
-    color: white;
-
     text-align: center;
+
+    color: white;
 
     margin-bottom: 30px;
 
-    font-size: 38px;
-
-    letter-spacing: 1px;
+    font-size: 42px;
 }
 
 .search-form{
@@ -42,37 +43,48 @@ h1{
 
     gap: 15px;
 
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+
+    flex-wrap: wrap;
 }
 
 .search-form input{
 
-    width: 300px;
+    width: 320px;
 
-    padding: 12px;
+    padding: 14px;
 
     border: none;
 
     outline: none;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
-    font-size: 15px;
-}
-
-.search-form button{
-
-    padding: 12px 20px;
-
-    border: none;
-
-    border-radius: 10px;
-
-    background: #2563eb;
+    background: rgba(255,255,255,0.1);
 
     color: white;
 
     font-size: 15px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.search-form input::placeholder{
+
+    color: rgba(255,255,255,0.7);
+}
+
+.search-form button{
+
+    padding: 14px 24px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #2563eb;
+
+    color: white;
 
     font-weight: bold;
 
@@ -83,9 +95,24 @@ h1{
 
 .search-form button:hover{
 
-    background: #1d4ed8;
+    transform: translateY(-3px);
 
-    transform: scale(1.05);
+    background: #1d4ed8;
+}
+
+.table-container{
+
+    overflow-x: auto;
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 table{
@@ -94,22 +121,14 @@ table{
 
     border-collapse: collapse;
 
-    background: white;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    color: white;
 }
 
 th{
 
-    background: #2563eb;
+    background: rgba(255,255,255,0.15);
 
-    color: white;
-
-    padding: 15px;
+    padding: 16px;
 
     font-size: 15px;
 }
@@ -120,23 +139,47 @@ td{
 
     text-align: center;
 
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 tr:hover{
 
-    background: #f1f5f9;
+    background: rgba(255,255,255,0.05);
+}
+
+.edit-btn{
+
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #22c55e;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
 
     transition: 0.3s;
 }
 
+.edit-btn:hover{
+
+    transform: scale(1.05);
+
+    background: #16a34a;
+}
+
 .delete-btn{
 
-    padding: 8px 14px;
+    padding: 10px 16px;
 
     border: none;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
     background: crimson;
 
@@ -151,45 +194,26 @@ tr:hover{
 
 .delete-btn:hover{
 
-    background: darkred;
-
     transform: scale(1.05);
-} 
+
+    background: darkred;
+}
 
 .flash-message{
 
     width: fit-content;
 
-    margin: 20px auto;
+    margin: 0 auto 25px;
 
-    padding: 14px 22px;
+    padding: 14px 24px;
 
     background: #22c55e;
 
     color: white;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     font-weight: bold;
 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity: 0;
-
-        transform: translateY(-10px);
-    }
-
-    to{
-
-        opacity: 1;
-
-        transform: translateY(0);
-    }
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
